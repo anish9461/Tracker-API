@@ -7,11 +7,6 @@ import java.util.UUID;
 public class Vehicle {
 
     @Id
-    private String VehicleID;
-
-
-
-    @Column(unique = true)
     private String vin;
 
     private String model;
@@ -21,17 +16,7 @@ public class Vehicle {
     private double maxFuelVolume;
     private String lastServiceDate;
 
-    public Vehicle (){
-        this.VehicleID = UUID.randomUUID().toString();
-    }
 
-    public String getVehicleID() {
-        return VehicleID;
-    }
-
-    public void setVehicleID(String vehicleID) {
-        VehicleID = vehicleID;
-    }
 
     public String getVin() {
         return vin;
@@ -88,4 +73,6 @@ public class Vehicle {
     public void setLastServiceDate(String lastServiceDate) {
         this.lastServiceDate = lastServiceDate;
     }
+
+
 }

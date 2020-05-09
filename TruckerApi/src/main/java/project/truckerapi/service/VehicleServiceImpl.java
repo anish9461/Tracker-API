@@ -25,13 +25,9 @@ public class VehicleServiceImpl implements VehicleService{
     public List<Vehicle> createVehicle(List<Vehicle> vehicles){
 
         for(Vehicle vehicle : vehicles) {
-            System.out.println("Vehicle "+vehicle);
+            System.out.println("Vehicle "+vehicle.toString());
 
-            Optional<Vehicle> existing = vehicleRepository.findByVin(vehicle.getVin());
-            if (existing.isPresent()) {
-                continue;
-            }
-           vehicleRepository.save(vehicle);
+            vehicleRepository.save(vehicle);
         }
          return vehicles;
 
