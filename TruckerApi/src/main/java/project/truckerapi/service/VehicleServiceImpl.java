@@ -47,7 +47,7 @@ public class VehicleServiceImpl implements VehicleService{
 
 
     @Transactional(readOnly = true)
-    public JSObject getVehicleLocation(String vin) {
+    public List<JSObject> getVehicleLocation(String vin) {
         return null;
     }
 }
