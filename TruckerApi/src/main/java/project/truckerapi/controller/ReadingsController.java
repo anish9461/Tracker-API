@@ -22,7 +22,7 @@ public class ReadingsController {
     @Autowired
     private ReadingsService readingsService;
 
-    @GetMapping
+    @GetMapping(produces = "application/json")
     @ApiOperation(value = "Find All Readings of reported Sensor Data", notes = "Returns a list of all readings of sensor data available in the database")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),

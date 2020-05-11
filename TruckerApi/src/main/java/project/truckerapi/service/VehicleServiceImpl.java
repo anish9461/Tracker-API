@@ -4,8 +4,10 @@ package project.truckerapi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import project.truckerapi.entity.Alerts;
 import project.truckerapi.entity.Vehicle;
 import project.truckerapi.exception.BadRequestException;
+import project.truckerapi.repository.AlertsRepository;
 import project.truckerapi.repository.VehicleRepository;
 
 import java.util.List;
@@ -16,6 +18,9 @@ public class VehicleServiceImpl implements VehicleService{
 
     @Autowired
     private VehicleRepository vehicleRepository;
+
+    @Autowired
+    private AlertsRepository alertsRepository;
 
     @Transactional(readOnly = true)
     public List<Vehicle> findAllVehicles(){
@@ -45,6 +50,10 @@ public class VehicleServiceImpl implements VehicleService{
         }
     }
 
+    @Transactional(readOnly = true)
+    public List<Alerts> findAllVehicleAlerts(String vin) {
+        return alertsRepository.findAllByVin(vin);
+    }
 
 //    @Transactional(readOnly = true)
 //    public List<JSObject> getVehicleLocation(String vin) {

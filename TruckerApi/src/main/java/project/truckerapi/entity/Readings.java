@@ -1,5 +1,6 @@
 package project.truckerapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import project.truckerapi.repository.TiresRepository;
@@ -9,6 +10,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Readings {
 
     @Id
@@ -148,5 +150,22 @@ public class Readings {
         this.timestamp = timestamp;
     }
 
-
+    @Override
+    public String toString() {
+        return "Readings{" +
+                "ReadingsID='" + ReadingsID + '\'' +
+                ", tires=" + tires.toString() +
+                ", vin='" + vin + '\'' +
+                ", fuelVolume=" + fuelVolume +
+                ", speed=" + speed +
+                ", engineHp=" + engineHp +
+                ", checkEngineLightOn=" + checkEngineLightOn +
+                ", engineCoolantLow=" + engineCoolantLow +
+                ", cruiseControlOn=" + cruiseControlOn +
+                ", engineRpm=" + engineRpm +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", timestamp='" + timestamp + '\'' +
+                '}';
+    }
 }

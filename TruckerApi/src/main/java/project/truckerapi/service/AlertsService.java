@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AlertsService {
     List<Alerts> fetchHighAlerts();
-    List<Alerts> findAllVehicleAlerts(String vin);
+
     void checkRules(Readings reading);
     void createAlerts(String vin,String rule,String priority);
 }

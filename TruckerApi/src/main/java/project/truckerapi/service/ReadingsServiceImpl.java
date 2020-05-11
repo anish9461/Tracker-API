@@ -20,11 +20,16 @@ public class ReadingsServiceImpl implements ReadingsService{
     @Autowired
     private TiresRepository tiresRepository;
 
-    @Autowired AlertsService alertsService;
+    @Autowired
+    private AlertsService alertsService;
 
     @Transactional(readOnly = true)
     public List<Readings> findAllReadings(){
+        List<Readings> r = (List<Readings>) readingsRepository.findAll();
+        System.out.println(r.get(0).toString());
         return (List<Readings>) readingsRepository.findAll();
+        //return null;
+        //return (List<Readings>) readingsRepository.findAll();
     }
 
     @Transactional

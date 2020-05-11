@@ -29,15 +29,6 @@ public class AlertsController {
         return alertsService.fetchHighAlerts();
     }
 
-    @GetMapping(value = "/{id}")
-    @ApiOperation(value = "Get vehicle's all Alerts", notes = "Returns a list of all alerts for the vehicle available in the database")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 404, message = "Not Found"),
-            @ApiResponse(code = 500, message = "Internal Server Error")
-    })
-    public List<Alerts> getAllVehicleAlerts(@PathVariable("id") String vin){
-        return alertsService.findAllVehicleAlerts(vin);
-    }
+
 
 }

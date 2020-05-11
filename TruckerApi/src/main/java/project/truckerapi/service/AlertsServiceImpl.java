@@ -27,10 +27,7 @@ public class AlertsServiceImpl implements AlertsService{
         return null;
     }
 
-    @Transactional(readOnly = true)
-    public List<Alerts> findAllVehicleAlerts(String vin) {
-        return null;
-    }
+
 
     @Transactional
     public void createAlerts(String vin,String rule,String priority){
@@ -58,27 +55,27 @@ public class AlertsServiceImpl implements AlertsService{
             System.out.println("Vehicle present");
             Vehicle vehicle = vehicleService.getVehicleDetails(vehicleID);
             if(reading.getEngineRpm() > vehicle.getRedlineRpm()){
-                rule = "Vehicle Engine RPM is greater than Readline RPM";
+                rule = "Vehicle Engine RPM is : "+reading.getEngineRpm()+" greater than Readline RPM of : "+vehicle.getRedlineRpm();
                 createAlerts(vehicleID,rule,"HIGH");
             }
             if(reading.getFuelVolume() < (0.10 * vehicle.getMaxFuelVolume())){
-                rule = "Vehicle Fuel volume is less than 10% of the maximum fuel volume";
+                rule = "Vehicle Fuel volume is : "+reading.getFuelVolume()+" less than 10% of the maximum fuel volume of : "+vehicle.getMaxFuelVolume();
                 createAlerts(vehicleID,rule,"MEDIUM");
             }
             if(leftFTire > 36 || leftFTire < 32){
-                rule = "Front Left tire pressure is :"+leftFTire;
+                rule = "Front Left tire pressure is : "+leftFTire+"psi";
                 createAlerts(vehicleID,rule,"LOW");
             }
             if(leftRTire > 36 || leftRTire < 32){
-                rule = "Rear Left tire pressure is :"+leftRTire;
+                rule = "Rear Left tire pressure is : "+leftRTire+"psi";
                 createAlerts(vehicleID,rule,"LOW");
             }
             if(rightFTire > 36 || rightFTire < 32){
-                rule = "Front Right tire pressure is :"+rightFTire;
+                rule = "Front Right tire pressure is : "+rightFTire+"psi";
                 createAlerts(vehicleID,rule,"LOW");
             }
             if(rightRTire > 36 || rightRTire < 32){
-                rule = "Rear Right tire pressure is :"+rightRTire;
+                rule = "Rear Right tire pressure is : "+rightRTire+"psi";
                 createAlerts(vehicleID,rule,"LOW");
             }
             if(reading.isEngineCoolantLow() || reading.isCheckEngineLightOn()){
