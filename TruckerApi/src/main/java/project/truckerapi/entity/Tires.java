@@ -11,7 +11,8 @@ public class Tires {
     @Id
     private String TiresID;
 
-
+    @OneToOne(mappedBy = "tires")
+    private Readings readings;
 
     private int frontLeft;
     private int frontRight;
@@ -21,7 +22,9 @@ public class Tires {
 
     public Tires()
     {
+
         this.TiresID = UUID.randomUUID().toString();
+
     }
 
     public String getTiresID() {
@@ -62,5 +65,16 @@ public class Tires {
 
     public void setRearRight(int rearRight) {
         this.rearRight = rearRight;
+    }
+
+    @Override
+    public String toString() {
+        return "Tires{" +
+                "TiresID='" + TiresID + '\'' +
+                ", frontLeft=" + frontLeft +
+                ", frontRight=" + frontRight +
+                ", rearLeft=" + rearLeft +
+                ", rearRight=" + rearRight +
+                '}';
     }
 }
