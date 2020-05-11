@@ -30,7 +30,7 @@ public class AlertsController {
     }
 
     @GetMapping(value = "/{id}")
-    @ApiOperation(value = "Find vehicle's Alerts", notes = "Returns a list of all alerts for the vehicle available in the database")
+    @ApiOperation(value = "Get vehicle's all Alerts", notes = "Returns a list of all alerts for the vehicle available in the database")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 404, message = "Not Found"),
