@@ -17,7 +17,7 @@ public class VehicleController {
     VehicleService vehicleService;
 
     @GetMapping
-    public List<Vehicle> findAll(){
+    public List<Vehicle> fetchAllVehicles(){
         return vehicleService.findAllVehicles();
     }
 
@@ -25,6 +25,7 @@ public class VehicleController {
     public List<Vehicle> createVehicles(@RequestBody List<Vehicle> vehicles){
         return vehicleService.createVehicle(vehicles);
     }
+
 
 
 }

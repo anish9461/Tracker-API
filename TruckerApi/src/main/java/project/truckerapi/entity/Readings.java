@@ -11,11 +11,8 @@ import java.util.UUID;
 @Entity
 public class Readings {
 
-
-
     @Id
     private String ReadingsID;
-
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tires_tiresid")
@@ -33,13 +30,13 @@ public class Readings {
     private double longitude;
     private String timestamp;
 
-    public Readings(){
+    public Readings() {
         this.ReadingsID = UUID.randomUUID().toString();
     }
 
     @JsonProperty("tires")
-    private void mapTires(Map<String, Integer> tires){
-        System.out.println("tires "+tires.get("frontLeft"));
+    private void mapTires(Map<String, Integer> tires) {
+        System.out.println("tires " + tires.get("frontLeft"));
         this.tires = new Tires();
         this.tires.setFrontLeft(tires.get("frontLeft"));
         this.tires.setFrontRight(tires.get("frontRight"));

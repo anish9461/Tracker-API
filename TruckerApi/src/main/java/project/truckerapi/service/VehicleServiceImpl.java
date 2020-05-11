@@ -1,5 +1,6 @@
 package project.truckerapi.service;
 
+import netscape.javascript.JSObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,5 +43,11 @@ public class VehicleServiceImpl implements VehicleService{
         else {
             return null;
         }
+    }
+
+
+    @Transactional(readOnly = true)
+    public JSObject getVehicleLocation(String vin) {
+        return null;
     }
 }
