@@ -33,4 +33,14 @@ public class VehicleServiceImpl implements VehicleService{
 
     }
 
+    @Transactional(readOnly = true)
+    public Vehicle getVehicleDetails(String vin) {
+        Optional<Vehicle> existing = vehicleRepository.findById(vin);
+        if(existing.isPresent()){
+            return existing.get();
+        }
+        else {
+            return null;
+        }
+    }
 }

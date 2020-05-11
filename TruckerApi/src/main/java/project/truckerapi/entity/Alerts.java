@@ -1,7 +1,12 @@
 package project.truckerapi.entity;
 
+import com.mysql.cj.protocol.ColumnDefinition;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @Entity
@@ -13,7 +18,8 @@ public class Alerts {
     private String vin;
     private String Rule;
     private String Priority;
-    private String timestamp;
+    @Column(columnDefinition = "TIMESTAMP")
+    private Timestamp timestamp;
 
 
     public Alerts(){
@@ -52,11 +58,11 @@ public class Alerts {
         Priority = priority;
     }
 
-    public String getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 }

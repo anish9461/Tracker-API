@@ -10,4 +10,6 @@ public interface VehicleService {
 
     List<Vehicle> createVehicle(List<Vehicle> vehicles);
 
+    Vehicle getVehicleDetails(String vin);
+
 }

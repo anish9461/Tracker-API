@@ -20,6 +20,8 @@ public class ReadingsServiceImpl implements ReadingsService{
     @Autowired
     private TiresRepository tiresRepository;
 
+    @Autowired AlertsService alertsService;
+
     @Transactional(readOnly = true)
     public List<Readings> findAllReadings(){
         return (List<Readings>) readingsRepository.findAll();
@@ -29,6 +31,7 @@ public class ReadingsServiceImpl implements ReadingsService{
     public Readings createReadings(Readings reading){
         //check if vin is present in database
         Tires tires = reading.getTires();
+        alertsService.checkRules(reading);
         tiresRepository.save(tires);
         return readingsRepository.save(reading);
     }
