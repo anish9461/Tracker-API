@@ -12,6 +12,7 @@ import project.truckerapi.entity.Vehicle;
 import project.truckerapi.service.VehicleService;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://mocker.egen.academy")
 @RestController
@@ -51,6 +52,17 @@ public class VehicleController {
     })
     public List<Alerts> getAllVehicleAlerts(@PathVariable("id") String vin){
         return vehicleService.findAllVehicleAlerts(vin);
+    }
+
+    @GetMapping(value = "/location/{id}")
+    @ApiOperation(value = "Get vehicle's Location", notes = "Returns a list of all latitudes and longitudes for the vehicle available in the database")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Internal Server Error")
+    })
+    public List<Map<String,String>> getVehicleLocation(@PathVariable("id") String vin){
+        return vehicleService.getVehicleLocation(vin);
     }
 
 }

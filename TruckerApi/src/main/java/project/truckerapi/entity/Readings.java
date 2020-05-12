@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import project.truckerapi.repository.TiresRepository;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Map;
 import java.util.UUID;
 
@@ -30,7 +31,16 @@ public class Readings {
     private double engineRpm;
     private double latitude;
     private double longitude;
-    private String timestamp;
+    private Timestamp timestamp;
+    private Timestamp created;
+
+    public Timestamp getCreated() {
+        return created;
+    }
+
+    public void setCreated(Timestamp created) {
+        this.created = created;
+    }
 
     public Readings() {
         this.ReadingsID = UUID.randomUUID().toString();
@@ -142,11 +152,11 @@ public class Readings {
         this.longitude = longitude;
     }
 
-    public String getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 

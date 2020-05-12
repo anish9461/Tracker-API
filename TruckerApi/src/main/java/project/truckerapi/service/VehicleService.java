@@ -5,6 +5,7 @@ import project.truckerapi.entity.Alerts;
 import project.truckerapi.entity.Vehicle;
 
 import java.util.List;
+import java.util.Map;
 
 public interface VehicleService {
 
@@ -16,6 +17,6 @@ public interface VehicleService {
 
     List<Alerts> findAllVehicleAlerts(String vin);
 
- //   List<JSObject> getVehicleLocation(String vin);
+    List<Map<String,String>> getVehicleLocation(String vin);
 
 }

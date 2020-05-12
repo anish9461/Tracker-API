@@ -10,7 +10,9 @@ import project.truckerapi.entity.Vehicle;
 import project.truckerapi.repository.AlertsRepository;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -24,7 +26,12 @@ public class AlertsServiceImpl implements AlertsService{
 
     @Transactional(readOnly = true)
     public List<Alerts> fetchHighAlerts() {
-        return null;
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.HOUR_OF_DAY, -2);
+        Timestamp t = new Timestamp(c.getTimeInMillis());
+        System.out.println(t);
+
+        return alertsRepository.getHighAlerts("HIGH",t);
     }
 
 

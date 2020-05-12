@@ -9,6 +9,7 @@ import project.truckerapi.entity.Tires;
 import project.truckerapi.repository.ReadingsRepository;
 import project.truckerapi.repository.TiresRepository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -36,6 +37,8 @@ public class ReadingsServiceImpl implements ReadingsService{
     public Readings createReadings(Readings reading){
         //check if vin is present in database
         Tires tires = reading.getTires();
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        reading.setCreated(timestamp);
         alertsService.checkRules(reading);
         tiresRepository.save(tires);
         return readingsRepository.save(reading);
