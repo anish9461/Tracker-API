@@ -19,13 +19,13 @@ import java.util.*;
 public class VehicleServiceImpl implements VehicleService{
 
     @Autowired
-    private VehicleRepository vehicleRepository;
+    VehicleRepository vehicleRepository;
 
     @Autowired
-    private ReadingsRepository readingsRepository;
+    ReadingsRepository readingsRepository;
 
     @Autowired
-    private AlertsRepository alertsRepository;
+    AlertsRepository alertsRepository;
 
 //    @Autowired
 //    private LocationRepository locationRepository;
