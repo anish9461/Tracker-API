@@ -85,6 +85,15 @@ public class VehicleServiceImpl implements VehicleService{
         else{
             return null;
         }
+//        List<Map<String, String>> output = new ArrayList();
+//        for (Object[] object : result) {
+//            map = new HashMap<String, String>();
+//            map.put("Latitude", object[0].toString());
+//            map.put("Longitude", object[1].toString());
+//            output.add(map);
+//            System.out.println("In here");
+//        }
+//        return output;
     }
 
 }
