@@ -2,6 +2,7 @@ package project.truckerapi.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.truckerapi.entity.Readings;
@@ -21,16 +22,13 @@ public class ReadingsServiceImpl implements ReadingsService{
     @Autowired
     private TiresRepository tiresRepository;
 
+    //@Qualifier("alertsServiceImpl")
     @Autowired
     private AlertsService alertsService;
 
     @Transactional(readOnly = true)
     public List<Readings> findAllReadings(){
-        List<Readings> r = (List<Readings>) readingsRepository.findAll();
-        System.out.println(r.get(0).toString());
         return (List<Readings>) readingsRepository.findAll();
-        //return null;
-        //return (List<Readings>) readingsRepository.findAll();
     }
 
     @Transactional

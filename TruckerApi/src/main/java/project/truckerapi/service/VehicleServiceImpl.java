@@ -27,9 +27,6 @@ public class VehicleServiceImpl implements VehicleService{
     @Autowired
     AlertsRepository alertsRepository;
 
-//    @Autowired
-//    private LocationRepository locationRepository;
-
     @Transactional(readOnly = true)
     public List<Vehicle> findAllVehicles(){
         return (List<Vehicle>) vehicleRepository.findAll();
@@ -66,10 +63,8 @@ public class VehicleServiceImpl implements VehicleService{
     @Transactional(readOnly = true)
     public List<Map<String,String>> getVehicleLocation(String vin) {
         Calendar c = Calendar.getInstance();
-        c.add(Calendar.HOUR_OF_DAY, -1);
+        c.add(Calendar.MINUTE, -30);
         Timestamp t = new Timestamp(c.getTimeInMillis());
-        System.out.println(t);
-
         List<Object[]> result = readingsRepository.getVehicleReadings(vin, t);
         Map<String, String> map = null;
         if (result != null && !result.isEmpty()) {
@@ -81,19 +76,9 @@ public class VehicleServiceImpl implements VehicleService{
                 output.add(map);
             }
             return output;
-        }
-        else{
+        } else {
             return null;
         }
-//        List<Map<String, String>> output = new ArrayList();
-//        for (Object[] object : result) {
-//            map = new HashMap<String, String>();
-//            map.put("Latitude", object[0].toString());
-//            map.put("Longitude", object[1].toString());
-//            output.add(map);
-//            System.out.println("In here");
-//        }
-//        return output;
-    }
 
+    }
 }

@@ -111,9 +111,7 @@ public class VehicleServiceImplTest {
         Mockito.when(vehicleRepository.findAll()).thenReturn(vehicleList);
         //return
 
-        //when
         Mockito.when(vehicleRepository.findById("1HGCR2F3XFA027534")).thenReturn(Optional.of(v));
-        //return
 
         Mockito.when(vehicleRepository.save(v)).thenReturn(v);
 
@@ -126,12 +124,15 @@ public class VehicleServiceImplTest {
         objectlist.add(obj);
 
         Calendar c = Calendar.getInstance();
-        c.add(Calendar.HOUR_OF_DAY, -1);
+        c.add(Calendar.MINUTE, -30);
         Timestamp timestamp3 = new Timestamp(c.getTimeInMillis());
         Mockito.when(readingsRepository.getVehicleReadings("1HGCR2F3XFA027534",timestamp3)).thenReturn(objectlist);
     }
 
+@After()
+public void cleanup(){
 
+}
 
     @Test
     public void findAllVehicles() throws Exception{
@@ -151,6 +152,8 @@ List<Vehicle> result = vehicleService.findAllVehicles();
         Assert.assertEquals("Vehicle details should match",vehicleList.get(0),result);
     }
 
+
+
     @Test
     public void findAllVehicleAlerts() throws Exception{
         List<Alerts> result = vehicleService.findAllVehicleAlerts("1HGCR2F3XFA027534");
@@ -162,4 +165,10 @@ List<Vehicle> result = vehicleService.findAllVehicles();
         List<Map<String,String>> result = vehicleService.getVehicleLocation("1HGCR2F3XFA027534");
         Assert.assertEquals("Location Test match",output,result);
     }
+
+//    @Test
+//    public void getVehicleLocationNotFound() throws Exception{
+//        List<Map<String,String>> result = vehicleService.getVehicleLocation("asfd");
+//        Assert.assertEquals("Location Test match",output,result);
+//    }
 }
