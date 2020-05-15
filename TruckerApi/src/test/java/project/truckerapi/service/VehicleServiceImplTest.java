@@ -65,7 +65,8 @@ public class VehicleServiceImplTest {
         v.setYear("2015");
         v.setRedlineRpm(5500);
         v.setMaxFuelVolume(15);
-        v.setLastServiceDate("2017-05-25T17:31:25.268Z");
+        Timestamp timestamp4 = new Timestamp(System.currentTimeMillis());
+        v.setLastServiceDate(timestamp4);
 
         vehicleList = Collections.singletonList(v);
 

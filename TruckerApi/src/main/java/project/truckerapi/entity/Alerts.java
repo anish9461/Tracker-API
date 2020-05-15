@@ -18,7 +18,6 @@ public class Alerts {
     private String vin;
     private String Rule;
     private String Priority;
-    //@Column(columnDefinition = "TIMESTAMP")
     private Timestamp timestamp;
 
 

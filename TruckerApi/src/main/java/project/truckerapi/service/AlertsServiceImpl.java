@@ -22,7 +22,7 @@ public class AlertsServiceImpl implements AlertsService{
     @Autowired
     private AlertsRepository alertsRepository;
 
-   // @Qualifier("vehicleServiceImpl")
+    @Qualifier("vehicleServiceImpl")
     @Autowired
     private VehicleService vehicleService;
 
@@ -31,8 +31,6 @@ public class AlertsServiceImpl implements AlertsService{
         Calendar c = Calendar.getInstance();
         c.add(Calendar.HOUR_OF_DAY, -2);
         Timestamp t = new Timestamp(c.getTimeInMillis());
-        System.out.println(t);
-
         return alertsRepository.getHighAlerts("HIGH",t);
     }
 
@@ -52,7 +50,6 @@ public class AlertsServiceImpl implements AlertsService{
 
     @Transactional
     public void checkRules(Readings reading) {
-        //Fetch the vehicle data using find one function and check the four cases
         String vehicleID = reading.getVin();
         Tires tires = reading.getTires();
         int leftFTire = tires.getFrontLeft();

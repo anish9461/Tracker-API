@@ -1,6 +1,7 @@
 package project.truckerapi.entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @Entity
@@ -14,7 +15,7 @@ public class Vehicle {
     private String year;
     private double redlineRpm;
     private double maxFuelVolume;
-    private String lastServiceDate;
+    private Timestamp lastServiceDate;
 
 
 
@@ -66,11 +67,11 @@ public class Vehicle {
         this.maxFuelVolume = maxFuelVolume;
     }
 
-    public String getLastServiceDate() {
+    public Timestamp getLastServiceDate() {
         return lastServiceDate;
     }
 
-    public void setLastServiceDate(String lastServiceDate) {
+    public void setLastServiceDate(Timestamp lastServiceDate) {
         this.lastServiceDate = lastServiceDate;
     }
 
