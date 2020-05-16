@@ -22,7 +22,7 @@ public class AlertsServiceImpl implements AlertsService{
     @Autowired
     private AlertsRepository alertsRepository;
 
-    @Qualifier("vehicleServiceImpl")
+   // @Qualifier("vehicleServiceImpl")
     @Autowired
     private VehicleService vehicleService;
 

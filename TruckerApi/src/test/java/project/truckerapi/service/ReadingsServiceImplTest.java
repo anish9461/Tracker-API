@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 import project.truckerapi.entity.Readings;
 import project.truckerapi.entity.Tires;
+import project.truckerapi.entity.Vehicle;
 import project.truckerapi.repository.AlertsRepository;
 import project.truckerapi.repository.ReadingsRepository;
 import project.truckerapi.repository.TiresRepository;
@@ -21,6 +22,7 @@ import project.truckerapi.repository.VehicleRepository;
 import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -36,7 +38,7 @@ public class ReadingsServiceImplTest {
         }
 
         @Bean
-        public  AlertsService getAlertService(){
+        public AlertsService getAlertService(){
             return new AlertsServiceImpl();
         }
 
@@ -71,6 +73,18 @@ public class ReadingsServiceImplTest {
 
     @Before
     public void setUp() throws Exception {
+        Vehicle v = new Vehicle();
+        v.setVin("1HGCR2F3XFA027534");
+        v.setMake("HONDA");
+        v.setModel("ACCORD");
+        v.setYear("2015");
+        v.setRedlineRpm(5500);
+        v.setMaxFuelVolume(15);
+        Timestamp timestamp4 = new Timestamp(System.currentTimeMillis());
+        v.setLastServiceDate(timestamp4);
+        Mockito.when(vehicleRepository.save(v)).thenReturn(v);
+        Mockito.when(vehicleRepository.findById("1HGCR2F3XFA027534")).thenReturn(Optional.of(v));
+
         Readings r = new Readings();
         r.setVin("1HGCR2F3XFA027534");
         r.setCheckEngineLightOn(false);

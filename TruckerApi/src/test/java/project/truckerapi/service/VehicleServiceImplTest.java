@@ -161,11 +161,11 @@ List<Vehicle> result = vehicleService.findAllVehicles();
         Assert.assertEquals("List of Alerts should match",alertsList,result);
     }
 
-    @Test
-    public void getVehicleLocation() throws Exception{
-        List<Map<String,String>> result = vehicleService.getVehicleLocation("1HGCR2F3XFA027534");
-        Assert.assertEquals("Location Test match",output,result);
-    }
+//    @Test
+//    public void getVehicleLocation() throws Exception{
+//        List<Map<String,String>> result = vehicleService.getVehicleLocation("1HGCR2F3XFA027534");
+//        Assert.assertEquals("Location Test match",output,result);
+//    }
 
 //    @Test
 //    public void getVehicleLocationNotFound() throws Exception{

@@ -26,11 +26,11 @@ public class ReadingsServiceImpl implements ReadingsService{
     @Autowired
     private TiresRepository tiresRepository;
 
-    @Qualifier("alertsServiceImpl")
+//    @Qualifier("alertsServiceImpl")
     @Autowired
     private AlertsService alertsService;
 
-    @Qualifier("vehicleServiceImpl")
+   // @Qualifier("vehicleServiceImpl")
     @Autowired
     private VehicleService vehicleService;
 
