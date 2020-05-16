@@ -26,3 +26,14 @@ target/test-classes/project/truckerapi/service/ReadingsServiceImplTest$ReadingsS
 target/test-classes/project/truckerapi/service/ReadingsServiceImplTest.class
 target/test-classes/project/truckerapi/service/VehicleServiceImplTest$VehicleServiceImplTestConfiguration.class
 target/test-classes/project/truckerapi/service/VehicleServiceImplTest.class
+target/maven-archiver/pom.properties
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+target/surefire-reports/project.truckerapi.service.ReadingsServiceImplTest.txt
+target/surefire-reports/project.truckerapi.service.VehicleServiceImplTest.txt
+target/surefire-reports/TEST-project.truckerapi.service.ReadingsServiceImplTest.xml
+target/surefire-reports/TEST-project.truckerapi.service.VehicleServiceImplTest.xml
+target/TruckerApi-1.0.0.jar
+target/TruckerApi-1.0.0.jar.original
