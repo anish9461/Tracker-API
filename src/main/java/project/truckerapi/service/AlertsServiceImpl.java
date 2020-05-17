@@ -2,12 +2,17 @@ package project.truckerapi.service;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.costandusagereport.model.AWSRegion;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient;
 import com.amazonaws.services.simpleemail.model.*;
+import com.amazonaws.services.sns.AmazonSNS;
+import com.amazonaws.services.sns.AmazonSNSClientBuilder;
+import com.amazonaws.services.sns.model.PublishResult;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -20,6 +25,7 @@ import project.truckerapi.entity.Tires;
 import project.truckerapi.entity.Vehicle;
 import project.truckerapi.repository.AlertsRepository;
 
+import javax.annotation.PostConstruct;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -44,6 +50,7 @@ public class AlertsServiceImpl implements AlertsService{
     private String email_to = "anish9461@gmail.com";
     private String subject = "HIGH Alert Notification for Trucker API";
     private String email_body = "";
+    private String sms_message = "";
     private Regions AWS_REGION = Regions.US_EAST_1;
 
     @Transactional(readOnly = true)
@@ -54,7 +61,7 @@ public class AlertsServiceImpl implements AlertsService{
         return alertsRepository.getHighAlerts("HIGH",t);
     }
 
-    public void SendEmail(){
+    private void SendEmail(){
         BasicAWSCredentials b = new BasicAWSCredentials(env.getProperty("aws.AccessKey"), env.getProperty("aws.SecretKey"));
         AWSCredentials credentials = null;
         try {
@@ -81,6 +88,16 @@ public class AlertsServiceImpl implements AlertsService{
         System.out.println("Email sent");
     }
 
+    private void SendSMS(){
+        AWSCredentialsProvider awsCredentialsProvider = new AWSStaticCredentialsProvider(new BasicAWSCredentials(env.getProperty("aws.AccessKey"), env.getProperty("aws.SecretKey")));
+        AmazonSNS amazonSNS = AmazonSNSClientBuilder.standard()
+                .withCredentials(awsCredentialsProvider)
+                .withRegion(AWS_REGION)
+                .build();
+        PublishResult result = amazonSNS.publish(env.getProperty("aws.arn"),"This is from Java app");
+        System.out.println("SMS message ID "+result.getMessageId());
+    }
+
 
     @Transactional
     public void createAlerts(String vin,String rule,String priority){
@@ -93,7 +110,9 @@ public class AlertsServiceImpl implements AlertsService{
         //if alert priority is high send email
         if(priority == "HIGH") {
             email_body = "The rule " + alert.getRule() + " is violated";
+            sms_message = "The rule " + alert.getRule() + " is violated";
            // SendEmail();
+           // SendSMS();
         }
         alertsRepository.save(alert);
     }
