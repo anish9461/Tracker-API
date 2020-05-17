@@ -37,3 +37,4 @@ target/surefire-reports/TEST-project.truckerapi.service.ReadingsServiceImplTest.
 target/surefire-reports/TEST-project.truckerapi.service.VehicleServiceImplTest.xml
 target/TruckerApi-1.0.0.jar
 target/TruckerApi-1.0.0.jar.original
+src/main/resources/application.properties
