@@ -42,6 +42,7 @@ node {
                     --secret spring.datasource.password \
                     --secret aws.AccessKey \
                     --secret aws.SecretKey \
+                    --secret aws.arn \
                     ${DOCKERHUB_REPO}:${DOCKER_IMAGE_VERSION}
                 else
                   docker service update \
