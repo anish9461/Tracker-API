@@ -48,7 +48,6 @@ public class Readings {
 
     @JsonProperty("tires")
     private void mapTires(Map<String, Integer> tires) {
-        System.out.println("tires " + tires.get("frontLeft"));
         this.tires = new Tires();
         this.tires.setFrontLeft(tires.get("frontLeft"));
         this.tires.setFrontRight(tires.get("frontRight"));
