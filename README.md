@@ -1,18 +1,7 @@
-## ![horizontal line](media/image5.png) 
 
-![Placeholder image](media/image2.jpg)
+#CarTracker
+##A Fleet Management API
 
-CarTracker
-
-A Fleet Management API
-
-Anish Nesarkar
-
-Syracuse, New York
-
-[<span class="underline">anesarka@syr.edu</span>](mailto:anesarka@syr.edu)
-
-[<span class="underline">www.anishnesarkar.com</span>](http://www.anishnesarkar.com)
 
 
 **[Overview](#overview) 2**
